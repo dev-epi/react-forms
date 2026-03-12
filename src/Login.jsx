@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Login() {
     const [form , setForm] = useState({
@@ -14,6 +15,7 @@ export default function Login() {
         
     }
      const [errors , setErrors] = useState({})
+     const navigate = useNavigate();
     const signin = (e)=>{
         //annuler l'action par defaut 
         e.preventDefault()
@@ -29,6 +31,8 @@ export default function Login() {
        if(Object.keys(validate).length > 0){
         setErrors(validate)
        }else{
+        localStorage.setItem('token' , '123')
+        navigate('/tasks')
         alert('formulaire valide')
        }
     }

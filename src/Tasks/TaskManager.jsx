@@ -13,6 +13,13 @@ export default function TaskManager() {
        setList([data , ...list])
        reset()
     }
+
+    const removeTask = (index)=>{
+      let tasks = list;
+      tasks.splice(index , 1)
+
+      setList([...tasks])
+    }
   return (
     <div className="row">
       <div className="col-md-6 offset-md-3 card m-5 p-5">
@@ -30,7 +37,9 @@ export default function TaskManager() {
             </form>
         </div>
         {
-            list.map((task , index)=> <Task key={index} item={task}></Task>)
+            list.map((task , index)=> <Task key={index} 
+            item={task} index={index}
+            deleteEvent={removeTask}></Task>)
         }
        
       </div>
